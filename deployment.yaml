@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-hello-microservice
+spec:
+  selector:
+    matchLabels:
+      app: go-hello-microservice
+  template:
+    metadata:
+      labels:
+        app: go-hello-microservice
+    spec:
+      containers:
+      - name: go-hello-microservice-container
+        image: hambalee/go-hello-service:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8081
